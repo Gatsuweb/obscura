@@ -188,21 +188,31 @@
         .image-overlay {
             background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
         }
+        .ink-transition-mask {
+            /* mask-size calé sur le viewport pour éviter que le masque ne s'étire sur toute la hauteur de la page */
+            -webkit-mask-size: 100vw 100vh;
+            mask-size: 100vw 100vh;
+            /* On centre en haut pour que l'animation commence exactement là où l'utilisateur regarde */
+            -webkit-mask-position: top center;
+            mask-position: top center;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+        }
     </style>
 </head>
 <body class="bg-[#000000] text-on-background selection:bg-tertiary selection:text-on-tertiary font-body-md">
 <!-- TopAppBar -->
 <!-- TopNavBar Inspired by Reference -->
-<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 h-28 bg-black/50 backdrop-blur-sm">
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 md:px-16 h-20 md:h-28 bg-black/80 md:bg-transparent backdrop-blur-md md:backdrop-blur-none transition-all">
     
     <!-- Left: Logo Area -->
     <div class="flex flex-col h-full justify-center">
-        <h1 class="text-[32px] leading-none font-black tracking-tighter text-white font-['Epilogue'] uppercase">
+        <h1 class="text-[24px] md:text-[32px] leading-none font-black tracking-tighter text-white font-['Epilogue'] uppercase">
             OBSCURA
         </h1>
         <div class="flex items-center mt-1">
-            <div class="w-12 h-[2px] bg-white mr-3"></div>
-            <span class="text-[10px] font-bold tracking-[0.1em] text-white font-['Inter'] uppercase">SANCTUARY</span>
+            <div class="w-8 md:w-12 h-[2px] bg-white mr-2 md:mr-3"></div>
+            <span class="text-[8px] md:text-[10px] font-bold tracking-[0.1em] text-white font-['Inter'] uppercase">SANCTUARY</span>
         </div>
     </div>
 
@@ -221,7 +231,7 @@
     </div>
 
     <!-- Middle: Navigation Links -->
-    <div class="hidden md:flex gap-16 mr-16">
+    <div class="hidden lg:flex gap-16 mr-16">
         <div class="flex flex-col gap-2">
             <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="obscura.html">ACCUEIL</a>
             <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="obscura.html#projects">RÉALISATIONS</a>
@@ -232,25 +242,43 @@
         </div>
     </div>
 
-    <!-- Right: Reservation Button -->
-    <div class="flex items-stretch h-10">
-        <button class="bg-[#f0f0f0] text-black font-['Inter'] font-bold text-[10px] uppercase rounded-xs tracking-widest px-6 h-full flex items-center hover:bg-white transition-colors">
-            RÉSERVATION
-        </button>
-        <button class="bg-[#f0f0f0] text-black border-l border-zinc-300 w-10 h-full flex items-center justify-center hover:bg-white transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-            </svg>
+    <!-- Right: Reservation Button & Mobile Toggle -->
+    <div class="flex items-center gap-4">
+        <div class="flex items-stretch h-8 md:h-10">
+            <button class="bg-[#f0f0f0] text-black font-['Inter'] font-bold text-[9px] md:text-[10px] uppercase rounded-xs tracking-widest px-4 md:px-6 h-full flex items-center hover:bg-white transition-colors">
+                <span class="hidden sm:inline">RÉSERVATION</span>
+                <span class="sm:hidden">RÉSERVER</span>
+            </button>
+            <button class="bg-[#f0f0f0] text-black border-l border-zinc-300 w-8 md:w-10 h-full flex items-center justify-center hover:bg-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+            </button>
+        </div>
+        <!-- Hamburger Menu (Mobile Only) -->
+        <button id="mobile-menu-btn" class="lg:hidden text-white p-1">
+            <span class="material-symbols-outlined text-2xl">menu</span>
         </button>
     </div>
 </nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 bg-black/95 backdrop-blur-lg z-[100] hidden flex-col items-center justify-center gap-8 opacity-0 transition-opacity duration-300">
+    <button id="close-mobile-menu" class="absolute top-6 right-6 text-white p-2">
+        <span class="material-symbols-outlined text-3xl">close</span>
+    </button>
+    <a class="font-headline-display text-3xl text-white uppercase tracking-widest hover:text-tertiary transition-colors" href="obscura.html">ACCUEIL</a>
+    <a class="font-headline-display text-3xl text-white uppercase tracking-widest hover:text-tertiary transition-colors" href="obscura.html#projects">RÉALISATIONS</a>
+    <a class="font-headline-display text-3xl text-white uppercase tracking-widest hover:text-tertiary transition-colors" href="#artist">Artiste</a>
+    <a class="font-headline-display text-3xl text-white uppercase tracking-widest hover:text-tertiary transition-colors" href="obscura.html#faq">FAQ</a>
+</div>
 <main class="pt-32">
 <!-- Hero Section -->
 <section id="artist" class="px-8 md:px-36 mb-24 w-full mx-auto">
 <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
 <div class="max-w-2xl">
 <span class="font-label-caps text-label-caps text-tertiary uppercase mb-4 block">Artiste Résident</span>
-<h1 class="font-headline-display text-headline-display text-white mb-6 uppercase">SASHA BLACK</h1>
+<h1 class="font-headline-display text-[48px] md:text-headline-display leading-[1.1] md:leading-[1.0] text-white mb-6 uppercase">SASHA BLACK</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
                         Spécialisée dans les motifs géométriques et l'art ornemental. Sasha transforme des concepts mathématiques et spirituels en parures corporelles complexes, alliant symétrie parfaite et fluidité organique.
                     </p>
@@ -367,7 +395,7 @@
 <div class="md:col-span-8 bg-surface border border-zinc-900 p-12 flex flex-col justify-between min-h-[400px]">
 <div>
 <span class="font-label-caps text-label-caps text-tertiary mb-8 block uppercase">Philosophie</span>
-<h2 class="font-headline-lg text-headline-lg text-white mb-8">La Symétrie comme Langage Visuel</h2>
+<h2 class="font-headline-lg text-[32px] md:text-headline-lg leading-[1.1] text-white mb-8">La Symétrie comme Langage Visuel</h2>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
                             Sasha Black aborde chaque projet comme une équation esthétique. Elle croit que les lignes géométriques et ornementales épousent la forme du corps pour créer un équilibre absolu, transformant l'anatomie en géométrie sacrée.
                         </p>
@@ -404,7 +432,7 @@
 <section class="bg-zinc-950 border-y border-zinc-900 py-32 text-center overflow-hidden relative">
 <div class="relative z-10">
 <span class="font-label-caps text-label-caps text-zinc-500 uppercase tracking-[0.3em] mb-8 block">Demander une Résidence 2024</span>
-<h2 class="font-headline-display text-headline-display text-white mb-12">COMMENCER LE PROCESSUS</h2>
+<h2 class="font-headline-display text-[32px] md:text-headline-display leading-[1.1] md:leading-[1.0] text-white mb-12">COMMENCER LE PROCESSUS</h2>
 <a class="inline-block bg-white text-black px-12 py-5 font-label-caps text-label-caps uppercase tracking-[0.2em] hover:bg-tertiary transition-colors duration-500" href="#">
                     Réserver une Consultation
                 </a>
@@ -631,6 +659,60 @@
     // Update times immediately and then every minute
     updateTimes();
     setInterval(updateTimes, 60000);
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+
+    function openMobileMenu() {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('flex');
+        
+        // Disable opacity transition so ink mask is fully opaque immediately
+        mobileMenu.classList.remove('transition-opacity', 'duration-300');
+        
+        // Add ink mask
+        const inkUrl = "url('ink.gif?v=" + new Date().getTime() + "')";
+        mobileMenu.classList.add('ink-transition-mask');
+        mobileMenu.style.webkitMaskImage = inkUrl;
+        mobileMenu.style.maskImage = inkUrl;
+        
+        // Small delay to allow display:block to apply before animating opacity
+        setTimeout(() => {
+            mobileMenu.classList.remove('opacity-0');
+            mobileMenu.classList.add('opacity-100');
+        }, 10);
+        if (typeof lenis !== 'undefined') lenis.stop(); // Prevent scrolling while menu is open
+    }
+
+    function closeMobileMenu() {
+        // Re-enable opacity transition for smooth fade out
+        mobileMenu.classList.add('transition-opacity', 'duration-300');
+        
+        mobileMenu.classList.remove('opacity-100');
+        mobileMenu.classList.add('opacity-0');
+        
+        setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+            
+            // Clean up mask
+            mobileMenu.style.webkitMaskImage = "none";
+            mobileMenu.style.maskImage = "none";
+            mobileMenu.classList.remove('ink-transition-mask');
+        }, 300); // match transition duration
+        if (typeof lenis !== 'undefined') lenis.start();
+    }
+
+    if (mobileMenuBtn && closeMobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        closeMobileMenuBtn.addEventListener('click', closeMobileMenu);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+    }
 
 </script>
 </body></html>
