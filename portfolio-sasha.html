@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SASHA BLACK | OBSCURA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800;900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#131313",
+                    "on-tertiary-container": "#91702e",
+                    "on-tertiary-fixed": "#261900",
+                    "on-primary": "#303030",
+                    "surface-container-highest": "#353535",
+                    "tertiary-fixed": "#ffdea5",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#5d4201",
+                    "on-background": "#e5e2e1",
+                    "on-secondary-fixed-variant": "#454747",
+                    "tertiary-container": "#000000",
+                    "tertiary": "#e9c176",
+                    "outline-variant": "#4c4546",
+                    "surface-tint": "#c6c6c6",
+                    "primary-fixed": "#e2e2e2",
+                    "inverse-surface": "#e5e2e1",
+                    "on-surface-variant": "#cfc4c5",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "inverse-on-surface": "#313030",
+                    "primary-container": "#000000",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed": "#1b1b1b",
+                    "on-primary-container": "#757575",
+                    "on-surface": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-container-high": "#2a2a2a",
+                    "secondary": "#c6c6c7",
+                    "on-secondary": "#2f3131",
+                    "secondary-fixed": "#e2e2e2",
+                    "tertiary-fixed-dim": "#e9c176",
+                    "secondary-container": "#454747",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "background": "#131313",
+                    "on-tertiary": "#412d00",
+                    "surface-dim": "#131313",
+                    "surface-variant": "#353535",
+                    "outline": "#988e90",
+                    "error": "#ffb4ab",
+                    "primary": "#c6c6c6",
+                    "on-error": "#690005",
+                    "inverse-primary": "#5e5e5e",
+                    "surface-container-low": "#1c1b1b",
+                    "surface-container": "#20201f",
+                    "surface-bright": "#393939",
+                    "on-secondary-container": "#b4b5b5",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "on-primary-fixed-variant": "#474747"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-edge": "64px",
+                    "section-gap": "160px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-md": ["Epilogue"],
+                    "headline-display": ["Epilogue"],
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Epilogue"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-display": ["80px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        :root {
+            --item-width: 200px;
+            --item-height: 280px;
+            --ring-radius: 350px;
+        }
+        
+        @media (min-width: 768px) {
+            :root {
+                --item-width: 280px;
+                --item-height: 380px;
+                --ring-radius: 500px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            :root {
+                --item-width: 350px;
+                --item-height: 450px;
+                --ring-radius: 700px;
+            }
+        }
+
+        .ring-container {
+            perspective: 2000px;
+            overflow: visible;
+            height: 300vh;
+        }
+        .ring-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .ring-scene {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotateX(-5deg);
+        }
+        .ring-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .ring-auto-rotate {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: ringAutoRotate 120s linear infinite;
+        }
+        @keyframes ringAutoRotate {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(-360deg); }
+        }
+        .ring-item {
+            position: absolute;
+            width: var(--item-width);
+            height: var(--item-height);
+            background: #1A1A1A;
+            border: 1px solid #333333;
+            transition: filter 0.5s ease;
+        }
+        
+        /* 8 Items in a single ring */
+        .ring-item.i1 { transform: rotateY(0deg) translateZ(var(--ring-radius)); }
+        .ring-item.i2 { transform: rotateY(45deg) translateZ(var(--ring-radius)); }
+        .ring-item.i3 { transform: rotateY(90deg) translateZ(var(--ring-radius)); }
+        .ring-item.i4 { transform: rotateY(135deg) translateZ(var(--ring-radius)); }
+        .ring-item.i5 { transform: rotateY(180deg) translateZ(var(--ring-radius)); }
+        .ring-item.i6 { transform: rotateY(225deg) translateZ(var(--ring-radius)); }
+        .ring-item.i7 { transform: rotateY(270deg) translateZ(var(--ring-radius)); }
+        .ring-item.i8 { transform: rotateY(315deg) translateZ(var(--ring-radius)); }
+
+        .image-overlay {
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+        }
+    </style>
+</head>
+<body class="bg-[#000000] text-on-background selection:bg-tertiary selection:text-on-tertiary font-body-md">
+<!-- TopAppBar -->
+<!-- TopNavBar Inspired by Reference -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 h-28 bg-black/50 backdrop-blur-sm">
+    
+    <!-- Left: Logo Area -->
+    <div class="flex flex-col h-full justify-center">
+        <h1 class="text-[32px] leading-none font-black tracking-tighter text-white font-['Epilogue'] uppercase">
+            OBSCURA
+        </h1>
+        <div class="flex items-center mt-1">
+            <div class="w-12 h-[2px] bg-white mr-3"></div>
+            <span class="text-[10px] font-bold tracking-[0.1em] text-white font-['Inter'] uppercase">SANCTUARY</span>
+        </div>
+    </div>
+
+    <!-- Middle-Left: Timezones and Date -->
+    <div class="hidden lg:flex flex-col gap-1 ml-16 mr-auto">
+        <div class="flex items-center text-white font-['Inter'] text-[10px] font-bold tracking-wider">
+            <span class="w-20">QUIMPERLÉ</span>
+            <div class="w-2 h-2 rounded-full bg-white mx-2"></div>
+            <span id="time-quimperle">--:-- --</span>
+        </div>
+        <div class="flex items-center text-white font-['Inter'] text-[10px] font-bold tracking-wider">
+            <span class="w-20 text-zinc-400">DATE</span>
+            <div class="w-2 h-2 rounded-full bg-zinc-400 mx-2"></div>
+            <span id="current-date" class="text-zinc-400">--/--/----</span>
+        </div>
+    </div>
+
+    <!-- Middle: Navigation Links -->
+    <div class="hidden md:flex gap-16 mr-16">
+        <div class="flex flex-col gap-2">
+            <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="obscura.html">ACCUEIL</a>
+            <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="obscura.html#projects">RÉALISATIONS</a>
+        </div>
+        <div class="flex flex-col gap-2">
+            <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="#artist">Artiste</a>
+            <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="obscura.html#faq">FAQ</a>
+        </div>
+    </div>
+
+    <!-- Right: Reservation Button -->
+    <div class="flex items-stretch h-10">
+        <button class="bg-[#f0f0f0] text-black font-['Inter'] font-bold text-[10px] uppercase rounded-xs tracking-widest px-6 h-full flex items-center hover:bg-white transition-colors">
+            RÉSERVATION
+        </button>
+        <button class="bg-[#f0f0f0] text-black border-l border-zinc-300 w-10 h-full flex items-center justify-center hover:bg-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+            </svg>
+        </button>
+    </div>
+</nav>
+<main class="pt-32">
+<!-- Hero Section -->
+<section id="artist" class="px-8 md:px-36 mb-24 w-full mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-2xl">
+<span class="font-label-caps text-label-caps text-tertiary uppercase mb-4 block">Artiste Résident</span>
+<h1 class="font-headline-display text-headline-display text-white mb-6 uppercase">SASHA BLACK</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        Spécialisée dans les motifs géométriques et l'art ornemental. Sasha transforme des concepts mathématiques et spirituels en parures corporelles complexes, alliant symétrie parfaite et fluidité organique.
+                    </p>
+</div>
+<div class="flex flex-col gap-4 border-l border-zinc-800 pl-8 h-fit">
+<div>
+<span class="font-label-caps text-label-caps text-zinc-500 uppercase block">Style</span>
+<span class="font-body-md text-body-md text-white uppercase">Géométrique / Ornemental</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-zinc-500 uppercase block">Expérience</span>
+<span class="font-body-md text-body-md text-white uppercase">8 Ans d'Expérience Collective</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3D Ring Gallery -->
+<section class="ring-container bg-[#000000]">
+<div class="ring-sticky">
+<div class="ring-scene">
+<div class="ring-wrapper">
+<div class="ring-auto-rotate">
+    <div class="ring-item i1 group cursor-pointer overflow-hidden">
+        <img alt="Tattoo detail" class="w-full h-full object-cover grayscale brightness-75 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeURyEotVah4fR5f_ToPVhN6Th_oAOZGMjyanT8V5z_cZmW8No1ee-qWI-0iOkmj_r1U-df3v_bJ5CDUmgZJIRpUC03ZhZUDvG4tXirZAzoi4r-B09Tr5bOHeJ57vY4tHdHhKYgP0qKBDQrjTOkApWRhfUKiQ1GNTRq1ZkKHYBx0aUQvX9H7hIwmPCG7hNFjIkwd_trNYIMbYCKQYFnMKuDirWQhZXNpPJqotwn51fGCrkUJYN5Q8w_jvksfeFHVhGiLIxfHymLiE"/>
+    </div>
+    <div class="ring-item i2 group cursor-pointer overflow-hidden">
+        <img alt="Tattoo detail" class="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-dfJjwkH7_YH8e-Viz6Z1iCz8IHsGyRlT_3FoTZgmpxan9DNjrBpOSYQ0vqCkfR6yj2TOZOYi40eGn_kys9x9qQeaLcn9xNSMoIHMsSPZLK3__WjXd1l8z6rNNz4fnjl9ll_WMbnO9eCgd5unOjqvitz-eVYJK06lYr1Z7wwjRHZPjenS5nKRCoLRs3il99C8LaaQkCKqPE9d3YrWw1yiS5z95OeMhfCM7_zI8uR-unAJUE-q3vjySVFHxYpYigNTeA1-s070ZKw"/>
+    </div>
+    <div class="ring-item i3 group cursor-pointer overflow-hidden">
+        <img alt="Tattoo detail" class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpb8P2KT5X_wMTzjY7zBLYl3KqZDPMivoS_MBwwUbA59y4pvT98Jz9phdSwNvVHPVlYhqWgPycmGAk1AmefpXvExd-pJ4_5grsv6AhyYgz_6lAkoSOT1ds6gfrB-d8f3evFQJOGTA2k9TMvfvX6wHLl7ZKDqfkJt83llDycSYyMb16MaBlp3vu5qC8oOhPxoo3bNz3XDhArhp7x4NNxCZLTJP_oCDFD8v0_oqqhTbY1fZN8TYF9cjNGBJnklPSe0_ssdb5XZtaBHA"/>
+        <!-- <div class="image-overlay absolute inset-0 flex items-end p-6">
+            <div>
+                <span class="text-[10px] font-label-caps text-tertiary uppercase">Portfolio 01</span>
+            </div>
+        </div> -->
+    </div>
+    <div class="ring-item i4 group cursor-pointer overflow-hidden">
+        <img alt="Tattoo detail" class="w-full h-full object-cover grayscale brightness-75 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdIqa5jMu5ownCNJ77h0kQWEMQS1o9CSyKWMcBVFYLGLKGjLP0UuR645bakH0e4qRv3hjNKt1X1jJ9eFL6DV7sQ9oCIJu1mE6XzixHaCcaXNfwcu3spidZ-Xt-lhVRd59-o9VxcihY2Rhwcyx8r9jXF2Kwy4l1f6HRmmKj4X5WT6v5JLpqdYGVlW39mV6hGgAMIM0aVSZ3mYF5bu3cEm93AOGLEAb-1PXBQio-b-BFaTBTo0ysNYKfwtmzlmMFiOMDV0n2KhxTYgA"/>
+    </div>
+    <div class="ring-item i5 group cursor-pointer overflow-hidden">
+        <img alt="Tattoo detail" class="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf48r69I8V-Ub5vV5ZmF0eQxpVOEOPeyk9Hcw_OGDfzN7xbPzmAmTSbJ5BSUdok1V-IDdQlLun17EbtWvu7SW-Mbocvpc5QNj5ne2xlJ6IEDoNm83AHe1xAaf2JP-p-lS9hHuTXhsz795yHDTarivcfq7J2eNtzrhDuy4MjVMNT8ZVyH90wmQ-OP-QVEJrQn19y9D2bI0hiJ1sE5f2gmrhkf-Do7YViOYumTZRv8LKtfZmE_KiR-TelXw2fv30n6gMcm7b4YILbQ4"/>
+    </div>
+    <div class="ring-item i6 group cursor-pointer overflow-hidden">
+        <img alt="Tattoo detail" class="w-full h-full object-cover grayscale brightness-75 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeURyEotVah4fR5f_ToPVhN6Th_oAOZGMjyanT8V5z_cZmW8No1ee-qWI-0iOkmj_r1U-df3v_bJ5CDUmgZJIRpUC03ZhZUDvG4tXirZAzoi4r-B09Tr5bOHeJ57vY4tHdHhKYgP0qKBDQrjTOkApWRhfUKiQ1GNTRq1ZkKHYBx0aUQvX9H7hIwmPCG7hNFjIkwd_trNYIMbYCKQYFnMKuDirWQhZXNpPJqotwn51fGCrkUJYN5Q8w_jvksfeFHVhGiLIxfHymLiE"/>
+    </div>
+    <div class="ring-item i7 group cursor-pointer overflow-hidden">
+        <img alt="Tattoo detail" class="w-full h-full object-cover grayscale brightness-50 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-dfJjwkH7_YH8e-Viz6Z1iCz8IHsGyRlT_3FoTZgmpxan9DNjrBpOSYQ0vqCkfR6yj2TOZOYi40eGn_kys9x9qQeaLcn9xNSMoIHMsSPZLK3__WjXd1l8z6rNNz4fnjl9ll_WMbnO9eCgd5unOjqvitz-eVYJK06lYr1Z7wwjRHZPjenS5nKRCoLRs3il99C8LaaQkCKqPE9d3YrWw1yiS5z95OeMhfCM7_zI8uR-unAJUE-q3vjySVFHxYpYigNTeA1-s070ZKw"/>
+        <!-- <div class="image-overlay absolute inset-0 flex items-end p-6">
+            <div>
+                <span class="text-[10px] font-label-caps text-tertiary uppercase">Portfolio 02</span>
+            </div>
+        </div> -->
+    </div>
+    <div class="ring-item i8 group cursor-pointer overflow-hidden">
+        <img alt="Tattoo detail" class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpb8P2KT5X_wMTzjY7zBLYl3KqZDPMivoS_MBwwUbA59y4pvT98Jz9phdSwNvVHPVlYhqWgPycmGAk1AmefpXvExd-pJ4_5grsv6AhyYgz_6lAkoSOT1ds6gfrB-d8f3evFQJOGTA2k9TMvfvX6wHLl7ZKDqfkJt83llDycSYyMb16MaBlp3vu5qC8oOhPxoo3bNz3XDhArhp7x4NNxCZLTJP_oCDFD8v0_oqqhTbY1fZN8TYF9cjNGBJnklPSe0_ssdb5XZtaBHA"/>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Mosaic Gallery Section -->
+<section class="px-0 py-12 w-full flex flex-col items-center border-t border-zinc-900 mt-24">
+    <button id="viewMoreBtn" class="font-['Epilogue'] uppercase tracking-[0.2em] text-[12px] font-medium text-white border border-zinc-700 px-8 py-4 hover:bg-white hover:text-black transition-all duration-500 z-10 relative bg-[#000000]">
+        Voir plus
+    </button>
+    
+    <div id="mosaicGallery" class="w-full mt-16 px-4 md:px-8" style="display: none; opacity: 0;">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[250px] md:auto-rows-[300px]">
+            <!-- Bento Item 1: Large square -->
+            <div class="bento-item relative overflow-hidden group cursor-pointer border border-zinc-900 md:col-span-2 md:row-span-2">
+                <img alt="Gallery Image" class="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeURyEotVah4fR5f_ToPVhN6Th_oAOZGMjyanT8V5z_cZmW8No1ee-qWI-0iOkmj_r1U-df3v_bJ5CDUmgZJIRpUC03ZhZUDvG4tXirZAzoi4r-B09Tr5bOHeJ57vY4tHdHhKYgP0qKBDQrjTOkApWRhfUKiQ1GNTRq1ZkKHYBx0aUQvX9H7hIwmPCG7hNFjIkwd_trNYIMbYCKQYFnMKuDirWQhZXNpPJqotwn51fGCrkUJYN5Q8w_jvksfeFHVhGiLIxfHymLiE"/>
+            </div>
+            <!-- Bento Item 2: Wide rectangle -->
+            <div class="bento-item relative overflow-hidden group cursor-pointer border border-zinc-900 md:col-span-2 md:row-span-1">
+                <img alt="Gallery Image" class="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-dfJjwkH7_YH8e-Viz6Z1iCz8IHsGyRlT_3FoTZgmpxan9DNjrBpOSYQ0vqCkfR6yj2TOZOYi40eGn_kys9x9qQeaLcn9xNSMoIHMsSPZLK3__WjXd1l8z6rNNz4fnjl9ll_WMbnO9eCgd5unOjqvitz-eVYJK06lYr1Z7wwjRHZPjenS5nKRCoLRs3il99C8LaaQkCKqPE9d3YrWw1yiS5z95OeMhfCM7_zI8uR-unAJUE-q3vjySVFHxYpYigNTeA1-s070ZKw"/>
+            </div>
+            <!-- Bento Item 3: Standard square -->
+            <div class="bento-item relative overflow-hidden group cursor-pointer border border-zinc-900 md:col-span-1 md:row-span-1">
+                <img alt="Gallery Image" class="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpb8P2KT5X_wMTzjY7zBLYl3KqZDPMivoS_MBwwUbA59y4pvT98Jz9phdSwNvVHPVlYhqWgPycmGAk1AmefpXvExd-pJ4_5grsv6AhyYgz_6lAkoSOT1ds6gfrB-d8f3evFQJOGTA2k9TMvfvX6wHLl7ZKDqfkJt83llDycSYyMb16MaBlp3vu5qC8oOhPxoo3bNz3XDhArhp7x4NNxCZLTJP_oCDFD8v0_oqqhTbY1fZN8TYF9cjNGBJnklPSe0_ssdb5XZtaBHA"/>
+            </div>
+            <!-- Bento Item 4: Standard square -->
+            <div class="bento-item relative overflow-hidden group cursor-pointer border border-zinc-900 md:col-span-1 md:row-span-1">
+                <img alt="Gallery Image" class="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdIqa5jMu5ownCNJ77h0kQWEMQS1o9CSyKWMcBVFYLGLKGjLP0UuR645bakH0e4qRv3hjNKt1X1jJ9eFL6DV7sQ9oCIJu1mE6XzixHaCcaXNfwcu3spidZ-Xt-lhVRd59-o9VxcihY2Rhwcyx8r9jXF2Kwy4l1f6HRmmKj4X5WT6v5JLpqdYGVlW39mV6hGgAMIM0aVSZ3mYF5bu3cEm93AOGLEAb-1PXBQio-b-BFaTBTo0ysNYKfwtmzlmMFiOMDV0n2KhxTYgA"/>
+            </div>
+            <!-- Bento Item 5: Wide rectangle -->
+            <div class="bento-item relative overflow-hidden group cursor-pointer border border-zinc-900 md:col-span-2 md:row-span-1">
+                <img alt="Gallery Image" class="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf48r69I8V-Ub5vV5ZmF0eQxpVOEOPeyk9Hcw_OGDfzN7xbPzmAmTSbJ5BSUdok1V-IDdQlLun17EbtWvu7SW-Mbocvpc5QNj5ne2xlJ6IEDoNm83AHe1xAaf2JP-p-lS9hHuTXhsz795yHDTarivcfq7J2eNtzrhDuy4MjVMNT8ZVyH90wmQ-OP-QVEJrQn19y9D2bI0hiJ1sE5f2gmrhkf-Do7YViOYumTZRv8LKtfZmE_KiR-TelXw2fv30n6gMcm7b4YILbQ4"/>
+            </div>
+            <!-- Bento Item 6: Tall rectangle -->
+            <div class="bento-item relative overflow-hidden group cursor-pointer border border-zinc-900 md:col-span-1 md:row-span-2">
+                <img alt="Gallery Image" class="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeURyEotVah4fR5f_ToPVhN6Th_oAOZGMjyanT8V5z_cZmW8No1ee-qWI-0iOkmj_r1U-df3v_bJ5CDUmgZJIRpUC03ZhZUDvG4tXirZAzoi4r-B09Tr5bOHeJ57vY4tHdHhKYgP0qKBDQrjTOkApWRhfUKiQ1GNTRq1ZkKHYBx0aUQvX9H7hIwmPCG7hNFjIkwd_trNYIMbYCKQYFnMKuDirWQhZXNpPJqotwn51fGCrkUJYN5Q8w_jvksfeFHVhGiLIxfHymLiE"/>
+            </div>
+            <!-- Bento Item 7: Standard square -->
+            <div class="bento-item relative overflow-hidden group cursor-pointer border border-zinc-900 md:col-span-1 md:row-span-1">
+                <img alt="Gallery Image" class="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpb8P2KT5X_wMTzjY7zBLYl3KqZDPMivoS_MBwwUbA59y4pvT98Jz9phdSwNvVHPVlYhqWgPycmGAk1AmefpXvExd-pJ4_5grsv6AhyYgz_6lAkoSOT1ds6gfrB-d8f3evFQJOGTA2k9TMvfvX6wHLl7ZKDqfkJt83llDycSYyMb16MaBlp3vu5qC8oOhPxoo3bNz3XDhArhp7x4NNxCZLTJP_oCDFD8v0_oqqhTbY1fZN8TYF9cjNGBJnklPSe0_ssdb5XZtaBHA"/>
+            </div>
+            <!-- Bento Item 8: Wide rectangle -->
+            <div class="bento-item relative overflow-hidden group cursor-pointer border border-zinc-900 md:col-span-2 md:row-span-1">
+                <img alt="Gallery Image" class="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-dfJjwkH7_YH8e-Viz6Z1iCz8IHsGyRlT_3FoTZgmpxan9DNjrBpOSYQ0vqCkfR6yj2TOZOYi40eGn_kys9x9qQeaLcn9xNSMoIHMsSPZLK3__WjXd1l8z6rNNz4fnjl9ll_WMbnO9eCgd5unOjqvitz-eVYJK06lYr1Z7wwjRHZPjenS5nKRCoLRs3il99C8LaaQkCKqPE9d3YrWw1yiS5z95OeMhfCM7_zI8uR-unAJUE-q3vjySVFHxYpYigNTeA1-s070ZKw"/>
+            </div>
+            <!-- Bento Item 9: Standard square -->
+            <div class="bento-item relative overflow-hidden group cursor-pointer border border-zinc-900 md:col-span-1 md:row-span-1">
+                <img alt="Gallery Image" class="absolute inset-0 w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdIqa5jMu5ownCNJ77h0kQWEMQS1o9CSyKWMcBVFYLGLKGjLP0UuR645bakH0e4qRv3hjNKt1X1jJ9eFL6DV7sQ9oCIJu1mE6XzixHaCcaXNfwcu3spidZ-Xt-lhVRd59-o9VxcihY2Rhwcyx8r9jXF2Kwy4l1f6HRmmKj4X5WT6v5JLpqdYGVlW39mV6hGgAMIM0aVSZ3mYF5bu3cEm93AOGLEAb-1PXBQio-b-BFaTBTo0ysNYKfwtmzlmMFiOMDV0n2KhxTYgA"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bio & Philosophy Bento -->
+<section class="px-8 md:px-16 py-section-gap max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 bg-surface border border-zinc-900 p-12 flex flex-col justify-between min-h-[400px]">
+<div>
+<span class="font-label-caps text-label-caps text-tertiary mb-8 block uppercase">Philosophie</span>
+<h2 class="font-headline-lg text-headline-lg text-white mb-8">La Symétrie comme Langage Visuel</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                            Sasha Black aborde chaque projet comme une équation esthétique. Elle croit que les lignes géométriques et ornementales épousent la forme du corps pour créer un équilibre absolu, transformant l'anatomie en géométrie sacrée.
+                        </p>
+</div>
+</div>
+<div class="md:col-span-4 h-full relative group overflow-hidden border border-zinc-900">
+<img alt="Portrait de l'Artiste" class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-105" data-alt="Portrait professionnel en noir et blanc de l'artiste tatoueur" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGQWSeb4MTSgo2iv1YK1w5SCj1lLnZqk4AinPzlpspBRu33mOO1lCr5fFDGexkTDlIUFi5LdBxfdKCo9YdmfuIO23ymbm-CVLdx6Zbbykpumn4TdCvBNWQLJcS2tLfo7gL3SEYBreH-0O3Lrk3ZZ0JJxKQwM82PnqrQhUNxSC-cTFucj55dJQBWsCByL-pUQvuk62Y-Wqgx0NhYlypW3-POtr0KoDW4qqzWKtVBMzQ-R5yRcd8bAkk2u4kcQeK2RM90WV9aHBVTBc"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500"></div>
+</div>
+<div class="md:col-span-4 bg-surface border border-zinc-900 p-12 min-h-[300px]">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-6">workspace_premium</span>
+<h3 class="font-headline-md text-headline-md text-white mb-4 uppercase">Atelier Privé</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Travail exclusivement sur rendez-vous dans un environnement aseptisé, semblable à une galerie.
+                    </p>
+</div>
+<div class="md:col-span-4 bg-surface border border-zinc-900 p-12 min-h-[300px]">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-6">ink_highlighter</span>
+<h3 class="font-headline-md text-headline-md text-white mb-4 uppercase">Pigments Purs</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Utilisation de noirs personnalisés à base de carbone pour une profondeur et une longévité inégalées.
+                    </p>
+</div>
+<div class="md:col-span-4 bg-surface border border-zinc-900 p-12 min-h-[300px]">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-6">architecture</span>
+<h3 class="font-headline-md text-headline-md text-white mb-4 uppercase">Flux de Précision</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Adaptation de chaque design à votre biomécanique unique pour un ajustement parfait.
+                    </p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="bg-zinc-950 border-y border-zinc-900 py-32 text-center overflow-hidden relative">
+<div class="relative z-10">
+<span class="font-label-caps text-label-caps text-zinc-500 uppercase tracking-[0.3em] mb-8 block">Demander une Résidence 2024</span>
+<h2 class="font-headline-display text-headline-display text-white mb-12">COMMENCER LE PROCESSUS</h2>
+<a class="inline-block bg-white text-black px-12 py-5 font-label-caps text-label-caps uppercase tracking-[0.2em] hover:bg-tertiary transition-colors duration-500" href="#">
+                    Réserver une Consultation
+                </a>
+</div>
+<!-- Background Decoration -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-headline-display text-[20vw] text-white/[0.02] pointer-events-none select-none uppercase font-black whitespace-nowrap">
+                SASHA BLACK • SASHA BLACK • SASHA BLACK
+            </div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-20 px-8 md:px-16 border-t border-zinc-900 bg-[#000000] flex flex-col md:flex-row justify-between items-center gap-8 w-full">
+<div class="text-lg font-bold text-white font-headline-md tracking-tighter"><img src="logo-obscura.png" alt=""></div>
+<div class="flex flex-col md:flex-row items-center gap-8">
+<div class="flex gap-8">
+<a class="font-['Epilogue'] text-[9px] uppercase tracking-widest text-zinc-600 hover:text-white transition-opacity" href="#">Confidentialité</a>
+<a class="font-['Epilogue'] text-[9px] uppercase tracking-widest text-zinc-600 hover:text-white transition-opacity" href="#">Conditions</a>
+<a class="font-['Epilogue'] text-[9px] uppercase tracking-widest text-zinc-600 hover:text-white transition-opacity" href="#">Instagram</a>
+<a class="font-['Epilogue'] text-[9px] uppercase tracking-widest text-zinc-600 hover:text-white transition-opacity" href="#">Journal</a>
+</div>
+<p class="font-['Epilogue'] text-[9px] uppercase tracking-widest text-zinc-600">© 2024 OBSCURA TATTOO COLLECTIVE. TOUS DROITS RÉSERVÉS.</p>
+</div>
+</footer>
+
+<!-- Image Modal -->
+<div id="imageModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-[#000000]/95 opacity-0 backdrop-blur-md">
+    <button id="closeModalBtn" class="absolute top-8 right-8 text-white hover:text-zinc-400 transition-colors z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+    
+    <div class="w-full max-w-7xl mx-auto px-8 md:px-16 flex flex-col md:flex-row h-[85vh] gap-12 relative" id="modalContent">
+        <!-- Left: Large Image -->
+        <div class="w-full md:w-2/3 h-full relative flex items-center justify-center">
+            <img id="modalImage" src="" alt="Image du Portfolio Agrandie" class="max-w-full max-h-full object-contain shadow-2xl" />
+        </div>
+        
+        <!-- Right: Artist Info -->
+        <div class="w-full md:w-1/3 h-full flex flex-col justify-center border-l border-zinc-800 pl-8 md:pl-12">
+            <span class="font-label-caps text-[10px] text-zinc-500 uppercase mb-4 block tracking-[0.2em]">Détails de l'Artiste</span>
+            <h2 class="font-headline-md text-3xl text-white mb-2 uppercase tracking-tighter">SASHA BLACK</h2>
+            <p class="font-['Epilogue'] text-zinc-400 mb-12 uppercase tracking-[0.2em] text-[10px]">Artiste Résident / Géométrique</p>
+            
+            <div class="space-y-8 mb-16">
+                <div>
+                    <span class="font-['Epilogue'] text-zinc-600 uppercase text-[9px] tracking-widest block mb-2">Emplacement</span>
+                    <span class="text-white font-['Epilogue'] text-[11px] uppercase tracking-wider">Obscura Studio, Quimperlé</span>
+                </div>
+                <div>
+                    <span class="font-['Epilogue'] text-zinc-600 uppercase text-[9px] tracking-widest block mb-2">Instagram</span>
+                    <a href="#" class="text-white hover:text-zinc-300 transition-colors font-['Epilogue'] text-[11px] uppercase tracking-wider">@sasha.black</a>
+                </div>
+                <div>
+                    <span class="font-['Epilogue'] text-zinc-600 uppercase text-[9px] tracking-widest block mb-2">Email</span>
+                    <a href="mailto:booking@obscura.com" class="text-white hover:text-zinc-300 transition-colors font-['Epilogue'] text-[11px] uppercase tracking-wider">booking@obscura.com</a>
+                </div>
+            </div>
+            
+            <button class="w-full border border-white text-white py-4 font-['Epilogue'] text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 mt-auto md:mt-0">
+                Réserver une Consultation
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+<script>
+    // Initialize Lenis
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Register ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 3D Ring Gallery Animation
+    const container = document.querySelector('.ring-container');
+    const scene = document.querySelector('.ring-scene');
+    const wrapper = document.querySelector('.ring-wrapper');
+
+    if (container && scene && wrapper) {
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: container,
+                start: "top top",
+                end: "+=200%",
+                scrub: 1.5, // smoother scrub for a premium feel
+                pin: false, // .ring-sticky handles the sticky part
+            }
+        });
+
+        // The entire scene dynamically shifts perspective and comes closer
+        tl.to(scene, {
+            rotationX: -15,
+            rotationY: 20,
+            scale: 1.15,
+            ease: "power1.inOut"
+        }, 0);
+
+        // Wrapper rotates a full 360 degrees
+        tl.to(wrapper, {
+            rotationY: -360,
+            ease: "none"
+        }, 0);
+    }
+
+    // Mosaic Gallery Toggle
+    const viewMoreBtn = document.getElementById('viewMoreBtn');
+    const mosaicGallery = document.getElementById('mosaicGallery');
+
+    if (viewMoreBtn && mosaicGallery) {
+        viewMoreBtn.addEventListener('click', () => {
+            // If it's hidden, show it
+            if (mosaicGallery.style.display === 'none') {
+                mosaicGallery.style.display = 'block';
+                
+                // GSAP animation for revealing the grid
+                gsap.fromTo(mosaicGallery, 
+                    { opacity: 0, y: 50 },
+                    { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
+                );
+                
+                // Animate individual items cascading in
+                gsap.fromTo(mosaicGallery.querySelectorAll('.bento-item'),
+                    { opacity: 0, y: 30 },
+                    { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power2.out", delay: 0.2 }
+                );
+
+                // Update button text
+                viewMoreBtn.innerText = 'Voir moins';
+                
+                // Refresh ScrollTrigger so that subsequent sections adjust to the new page height
+                setTimeout(() => {
+                    ScrollTrigger.refresh();
+                }, 1000);
+            } else {
+                // Hide it
+                gsap.to(mosaicGallery, {
+                    opacity: 0, 
+                    y: 50, 
+                    duration: 0.5, 
+                    ease: "power2.in",
+                    onComplete: () => {
+                        mosaicGallery.style.display = 'none';
+                        viewMoreBtn.innerText = 'Voir plus';
+                        ScrollTrigger.refresh();
+                    }
+                });
+            }
+        });
+    }
+
+    // Modal Logic
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.getElementById('closeModalBtn');
+    
+    // Select all images from ring gallery and bento gallery
+    const galleryItems = document.querySelectorAll('.ring-item img, .bento-item img');
+    
+    galleryItems.forEach(img => {
+        img.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent trigger from parent
+            modalImg.src = img.src;
+            modal.style.display = 'flex';
+            
+            // Disable scroll
+            if(typeof lenis !== 'undefined') lenis.stop(); 
+            
+            // Animate in
+            gsap.to(modal, { opacity: 1, duration: 0.4, ease: "power2.out" });
+            gsap.fromTo('#modalContent', 
+                { y: 30, opacity: 0 }, 
+                { y: 0, opacity: 1, duration: 0.5, delay: 0.1, ease: "power3.out" }
+            );
+        });
+    });
+
+    const closeModal = () => {
+        gsap.to(modal, { 
+            opacity: 0, 
+            duration: 0.4, 
+            ease: "power2.in",
+            onComplete: () => {
+                modal.style.display = 'none';
+                if(typeof lenis !== 'undefined') lenis.start(); // Re-enable scroll
+            }
+        });
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Timezone Logic
+    function updateTimes() {
+        const now = new Date();
+        
+        // Quimperlé Time (Europe/Paris)
+        const quimperleOptions = { timeZone: 'Europe/Paris', hour: 'numeric', minute: '2-digit', hour12: true };
+        const quimperleTime = now.toLocaleTimeString('en-US', quimperleOptions);
+        const quimperleElement = document.getElementById('time-quimperle');
+        if (quimperleElement) quimperleElement.textContent = quimperleTime;
+
+        // Current Date
+        const dateOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        const currentDate = now.toLocaleDateString('fr-FR', dateOptions);
+        const dateElement = document.getElementById('current-date');
+        if (dateElement) dateElement.textContent = currentDate;
+    }
+
+    // Update times immediately and then every minute
+    updateTimes();
+    setInterval(updateTimes, 60000);
+
+</script>
+</body></html>

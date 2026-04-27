@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#1c1b1b",
+                      "on-secondary": "#2f3131",
+                      "inverse-on-surface": "#313030",
+                      "primary-fixed": "#e2e2e2",
+                      "surface-dim": "#131313",
+                      "tertiary-fixed-dim": "#e9c176",
+                      "on-surface": "#e5e2e1",
+                      "on-primary-container": "#757575",
+                      "on-primary-fixed-variant": "#474747",
+                      "on-primary": "#303030",
+                      "surface": "#131313",
+                      "surface-container-highest": "#353535",
+                      "background": "#131313",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "tertiary-container": "#000000",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "error": "#ffb4ab",
+                      "secondary": "#c6c6c7",
+                      "on-surface-variant": "#cfc4c5",
+                      "primary-fixed-dim": "#c6c6c6",
+                      "surface-container-lowest": "#0e0e0e",
+                      "primary": "#c6c6c6",
+                      "secondary-container": "#454747",
+                      "on-secondary-container": "#b4b5b5",
+                      "error-container": "#93000a",
+                      "outline": "#988e90",
+                      "on-tertiary-fixed": "#261900",
+                      "surface-container": "#20201f",
+                      "surface-variant": "#353535",
+                      "inverse-primary": "#5e5e5e",
+                      "tertiary": "#e9c176",
+                      "surface-container-high": "#2a2a2a",
+                      "on-tertiary": "#412d00",
+                      "on-primary-fixed": "#1b1b1b",
+                      "surface-bright": "#393939",
+                      "on-tertiary-container": "#91702e",
+                      "on-tertiary-fixed-variant": "#5d4201",
+                      "on-secondary-fixed-variant": "#454747",
+                      "surface-tint": "#c6c6c6",
+                      "on-error": "#690005",
+                      "tertiary-fixed": "#ffdea5",
+                      "outline-variant": "#4c4546",
+                      "inverse-surface": "#e5e2e1",
+                      "secondary-fixed": "#e2e2e2",
+                      "on-background": "#e5e2e1",
+                      "primary-container": "#000000"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "container-max": "1440px",
+                      "gutter": "24px",
+                      "margin-edge": "64px",
+                      "section-gap": "160px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "headline-display": ["Epilogue"],
+                      "headline-md": ["Epilogue"],
+                      "headline-lg": ["Epilogue"],
+                      "body-md": ["Inter"],
+                      "label-caps": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                      "headline-display": ["80px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    });
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .blend-text {
+            mix-blend-mode: difference;
+        }
+        .ink-transition-mask {
+            /* mask-size calé sur le viewport pour éviter que le masque ne s'étire sur toute la hauteur de la page */
+            -webkit-mask-size: 100vw 100vh;
+            mask-size: 100vw 100vh;
+            /* On centre en haut pour que l'animation commence exactement là où l'utilisateur regarde */
+            -webkit-mask-position: top center;
+            mask-position: top center;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="font-body-md bg-black overflow-hidden">
+
+<!-- Preloader / Ink Transition Overlay -->
+<div id="preloader" class="fixed inset-0 z-[9999] bg-black flex items-center justify-center pointer-events-none">
+    <img id="preloader-text" src="logo-obscura.png" alt="OBSCURA Logo" class="h-48 md:h-72 lg:h-96 w-auto object-contain opacity-0">
+</div>
+
+<!-- Main Content Wrapper for Mask -->
+<div id="main-content" class="w-full min-h-screen opacity-0">
+
+<!-- TopNavBar Inspired by Reference -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 h-28">
+    
+    <!-- Left: Logo Area -->
+    <div class="flex flex-col h-full justify-center">
+        <h1 class="text-[32px] leading-none font-black tracking-tighter text-white font-['Epilogue'] uppercase">
+            OBSCURA
+        </h1>
+        <div class="flex items-center mt-1">
+            <div class="w-12 h-[2px] bg-white mr-3"></div>
+            <span class="text-[10px] font-bold tracking-[0.1em] text-white font-['Inter'] uppercase">SANCTUARY</span>
+        </div>
+    </div>
+
+    <!-- Middle-Left: Timezones and Date -->
+    <div class="hidden lg:flex flex-col gap-1 ml-16 mr-auto">
+        <div class="flex items-center text-white font-['Inter'] text-[10px] font-bold tracking-wider">
+            <span class="w-20">QUIMPERLÉ</span>
+            <div class="w-2 h-2 rounded-full bg-white mx-2"></div>
+            <span id="time-quimperle">--:-- --</span>
+        </div>
+        <div class="flex items-center text-white font-['Inter'] text-[10px] font-bold tracking-wider">
+            <span class="w-20 text-zinc-400">DATE</span>
+            <div class="w-2 h-2 rounded-full bg-zinc-400 mx-2"></div>
+            <span id="current-date" class="text-zinc-400">--/--/----</span>
+        </div>
+    </div>
+
+    <!-- Middle: Navigation Links -->
+    <div class="hidden md:flex gap-16 mr-16">
+        <div class="flex flex-col gap-2">
+            <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="#">ACCUEIL</a>
+            <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="#projects">RÉALISATIONS</a>
+        </div>
+        <div class="flex flex-col gap-2">
+            <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="#team">Artiste</a>
+            <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="#">FAQ</a>
+        </div>
+    </div>
+
+    <!-- Right: Reservation Button -->
+    <div class="flex items-stretch h-10">
+        <button class="bg-[#f0f0f0] text-black font-['Inter'] font-bold text-[10px] uppercase rounded-xs ratracking-widest px-6 h-full flex items-center hover:bg-white transition-colors">
+            RÉSERVATION
+        </button>
+        <button class="bg-[#f0f0f0] text-black border-l border-zinc-300 w-10 h-full flex items-center justify-center hover:bg-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+            </svg>
+        </button>
+    </div>
+</nav>
+<!-- Hero Section: Split/Asymmetrical Design inspired by IMAGE_4 -->
+<section class="relative h-screen w-full flex flex-col md:flex-row overflow-hidden pt-24 bg-black ">
+<!-- Left Side: Content inspired by IMAGE_4 -->
+<div class="md:w-1/4 h-full flex flex-col justify-between p-16 z-20 bg-black border-r border-gray-100/20">
+<div class="space-y-8">
+<div class="flex items-center gap-3">
+<div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+<p class="font-label-caps text-zinc-300 text-[11px] tracking-widest max-w-[280px]">
+                        Obscura est reconnu pour sa précision, sa maîtrise technique et sa capacité à traduire des récits individuels en œuvres d'art intemporelles.
+                    </p>
+</div>
+</div>
+<!-- Showreel / Preview element in corner -->
+<div class="relative group cursor-pointer max-w-[300px]">
+<div class="aspect-video w-full bg-zinc-900 overflow-hidden relative border border-zinc-800">
+<img alt="Showreel preview" class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 transition-opacity duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFXJwWLR3vI6u6evosnRCBclfQM0_XCrb8oaydAOdr3fJi5Ku0mhvQxIK1wLicbBROqLrpB121bWY0xwESXuLnC3CdHe5XtEDMY71njfA0JPgQ6KQZdiqHF2cvjlNMN2XMuUjPJXiEY0obWpRep6Y_E7yQl0g9iCpNS4bza3zIWjx2KSYvUwZiesScKn605xLl-v628mmzY_inL8l5gEQiLqIsLyz6tv2u7iI2ey9p7x2CsvHewMWhqEdUzujt6F2RM-SKta50ANk"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl opacity-50">play_arrow</span>
+</div>
+</div>
+<div class="flex justify-between mt-3">
+<span class="font-label-caps text-[9px] text-white tracking-[0.2em] uppercase">Bande Démo</span>
+<span class="font-label-caps text-[9px] text-zinc-500 tracking-[0.2em]">0:44 SEC</span>
+</div>
+</div>
+</div>
+<!-- Right Side: Imagery and Big Overlapping Typography -->
+<div class="md:w-3/4 h-full relative overflow-hidden flex items-center">
+<div class="absolute inset-0 z-0">
+<img alt="Detailed black and grey torso tattoos" class="w-full h-full object-cover grayscale brightness-60" src="hero-img4.png"/>
+<div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent"></div>
+</div>
+<!-- Descriptive Text Overlay -->
+<div class="relative z-10 p-16 md:p-24 max-w-full text-right ml-auto">
+<h1 class="font-headline-display text-[10vw] md:text-[8vw] font-bold leading-[0.8] mb-8 blend-text tracking-tighter uppercase text-white opacity-70 select-none whitespace-nowrap">
+    <span class="inline-block"><span class="hero-char inline-block origin-bottom-left">O</span></span><!--
+    --><span class="inline-block"><span class="hero-char inline-block origin-bottom-left">B</span></span><!--
+    --><span class="inline-block"><span class="hero-char inline-block origin-bottom-left">S</span></span><!--
+    --><span class="inline-block"><span class="hero-char inline-block origin-bottom-left">C</span></span><!--
+    --><span class="inline-block"><span class="hero-char inline-block origin-bottom-left">U</span></span><!--
+    --><span class="inline-block"><span class="hero-char inline-block origin-bottom-left">R</span></span><!--
+    --><span class="inline-block"><span class="hero-char inline-block origin-bottom-left">A</span></span>
+</h1>
+<div class="space-y-4">
+<p class="font-label-caps text-tertiary tracking-[0.4em] uppercase text-xs">Là où l'art rencontre la peau</p>
+<p class="font-body-lg text-zinc-400 text-lg leading-relaxed max-w-lg ml-auto italic">
+                        La maîtrise technique rencontre une vision intemporelle. Nous considérons chaque pièce comme une fusion permanente entre artisanat et identité.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Studio Section -->
+<section class="py-[160px] px-16 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 items-center" id="studio">
+<div class="md:col-span-5">
+<span class="font-label-caps text-zinc-500 mb-6 block">01 / PHILOSOPHIE</span>
+<h2 class="font-headline-lg text-white mb-8">La peau comme toile pour des œuvres d'art permanentes.</h2>
+<p class="font-body-lg text-on-surface-variant max-w-md">
+                Situé à Quimperlé en Bretagne, le studio Obscura rejette l'éphémère. Nous considérons chaque pièce comme une œuvre d'archives — une fusion précise entre maîtrise technique et récit individuel. Notre studio est un sanctuaire pour ceux qui apprécient l'autorité silencieuse de l'artisanat.
+            </p>
+<div class="mt-12 border-t border-zinc-800 pt-8">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary">verified_user</span>
+<span class="font-label-caps text-white">Précision Clinique. Standards de Galerie.</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-7 relative">
+<div class="aspect-[4/5] border border-zinc-800 p-4 bg-surface-container-lowest">
+<img class="w-full h-full object-cover grayscale brightness-90" data-alt="Minimalist interior of a luxury tattoo studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKj40bx60FMEs9lwcelGGnR-Q1_xZOk6kpgtpvM9YdlxsSKnIlAt53kRQ2_mdhrNgRUjN7R1KoDM0wnnZVFHNn6FlrFbRpW6YPlhQR2LRMIYpqfVWkZJhhPprwxtza7Hz1JixO0H2H-K_zNX0joNmpdr-TCodTr5UPSTvWOE9729wgWmpOXnhpLFwf4HaKFTW153jXHJyvNIw2rdjDb9mg_vRYw__Fly8z3bHnMQwXbvrKSgPv1yWsERsM6zvW2DnWBUe-7QgoyEs"/>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="py-[160px] bg-surface-container-lowest" id="team">
+<div class="px-16 mb-24 flex justify-between items-end">
+<div>
+<span class="font-label-caps text-zinc-500 mb-6 block">02 / MAÎTRES</span>
+<h2 class="font-headline-lg text-white">Les Artisans</h2>
+</div>
+<div class="hidden md:block w-1/3 border-b border-zinc-800 mb-4"></div>
+</div>
+<div class="px-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Artist 1 -->
+<div class="group relative overflow-hidden bg-black border border-zinc-900 transition-colors duration-700 hover:border-tertiary/50">
+<div class="aspect-[3/4] overflow-hidden">
+<img alt="Elias Thorne portrait" class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105 group-hover:opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9QmffRk6Oy1AvFkvgw5hJ6ZqGOhqqlgLLxRupKETEtocVl1C-eW4-uOcpZZXO6VysKBTPNrEDuXUzZ4jCkvNVZuMrohf6WC8QudIGUe4qaqRzILEC_pr37SEIGXjj_tpuS3Pwc_EwnQlHBNjotcTnDl35fiY7o5jPxN7kMVvU8jHUXaYV_8eGGnREbYb0CqH8U34So3Rp0ktXb9-GL_6Riy1YZ0MmN_t-utLqWLb935bhRasKB6WWILgVuBjHt-DtsGaQcn1NAfw"/>
+</div>
+<div class="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black to-transparent">
+<h3 class="font-headline-md text-white">Elias Thorne</h3>
+<p class="font-label-caps text-zinc-500 mt-2">Fineline / Micro-Réalisme</p>
+<div class="h-0 group-hover:h-12 overflow-hidden transition-all duration-500 mt-4">
+<button class="text-tertiary font-label-caps uppercase text-[10px] tracking-widest flex items-center gap-2">
+                            Voir le Portfolio <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Artist 2 -->
+<div class="group relative overflow-hidden bg-black border border-zinc-900 transition-colors duration-700 hover:border-tertiary/50">
+<div class="aspect-[3/4] overflow-hidden">
+<img alt="Sasha Black portrait" class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105 group-hover:opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGQWSeb4MTSgo2iv1YK1w5SCj1lLnZqk4AinPzlpspBRu33mOO1lCr5fFDGexkTDlIUFi5LdBxfdKCo9YdmfuIO23ymbm-CVLdx6Zbbykpumn4TdCvBNWQLJcS2tLfo7gL3SEYBreH-0O3Lrk3ZZ0JJxKQwM82PnqrQhUNxSC-cTFucj55dJQBWsCByL-pUQvuk62Y-Wqgx0NhYlypW3-POtr0KoDW4qqzWKtVBMzQ-R5yRcd8bAkk2u4kcQeK2RM90WV9aHBVTBc"/>
+</div>
+<div class="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black to-transparent">
+<h3 class="font-headline-md text-white">Sasha Black</h3>
+<p class="font-label-caps text-zinc-500 mt-2">Géométrique / Ornemental</p>
+<div class="h-0 group-hover:h-12 overflow-hidden transition-all duration-500 mt-4">
+<button class="text-tertiary font-label-caps uppercase text-[10px] tracking-widest flex items-center gap-2">
+                            Voir le Portfolio <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Artist 3 -->
+<div class="group relative overflow-hidden bg-black border border-zinc-900 transition-colors duration-700 hover:border-tertiary/50">
+<div class="aspect-[3/4] overflow-hidden">
+<img alt="Marcus Vane portrait" class="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105 group-hover:opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdbHabWMnxzSIet_sPDaqMZFw61JHGDUTzwYGeaxbM91axtUL7Kwlxn4-MTP_P-8ZsonE8LNofoNryRXLMtvAAlpQBvcBLUO03oNhMb1RiIXWvKZ8Oqjt3a9bJidN-r2Fhz3WvHCwOPSzorfOUbDF_JFgpWVnlxF9WAXBUv9thluYcMVlSQNao3VcxHVrhZHRPBg5JGlhL-7Agw7cN1hOnIN81DUFXp_cXM0_r6QvrNKG0shrSgr7KSBudwii6sKOhJIWoOe3pMTE"/>
+</div>
+<div class="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-black to-transparent">
+<h3 class="font-headline-md text-white">Marcus Vane</h3>
+<p class="font-label-caps text-zinc-500 mt-2">Surréaliste / Blackwork</p>
+<div class="h-0 group-hover:h-12 overflow-hidden transition-all duration-500 mt-4">
+<button class="text-tertiary font-label-caps uppercase text-[10px] tracking-widest flex items-center gap-2">
+                            Voir le Portfolio <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="py-[160px] px-16" id="projects">
+<div class="text-center mb-24">
+<span class="font-label-caps text-zinc-500 mb-6 block">03 / ARCHIVES</span>
+<h2 class="font-headline-lg text-white">Travaux Récents</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Featured -->
+<div class="md:col-span-8 group relative aspect-square md:aspect-video overflow-hidden border border-zinc-900">
+<img alt="Anatomical heart tattoo" class="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL-Z4smdaQ1CTuOvnKnrm070C4BlNmyUdzPxSU8UF-zMj197VZTI2GxwxyIZ6RTc9HoZHPcTGw-uK8jrdjXq35VtIl6KA8pK57-B6O2zS0tqPwYpW7_ez246G7bUukDNLhcUXkf_rSj7jE6c2zx_mrYd5JwwxzvX32HS8TDLEYKIFBxyAc_CAj0B6WIQjlBU1bQdBA8iIKEW5r1rg6RxwInRcPf5j35yZIaTL10eV86YXSNZZ7t67r4rDZgKCnJSYfJ_A0K5zIGv0"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="font-label-caps text-white border border-white/30 px-6 py-3">Voir le Projet</span>
+</div>
+</div>
+<!-- Secondary -->
+<div class="md:col-span-4 group relative aspect-square overflow-hidden border border-zinc-900">
+<img alt="Mandala tattoo" class="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3z-6wtYZ_BmNPslXhrSPCa9dWvS4X0oLpdVVWH1wn7n1SRW2igJ9O-Kzgo7wdhe2S-4iyNz08ZglKjv5yIlz7FdsVY4p2bx34Jap75RnQ8aG2fG9YskkpfLc6-bk1OKheToecbtK53nDZl4FaTjoUl5Q8YlGw0w8rc3VCIMihd3Q1ZkV7k1tfoEoY0VrG4o1RPmodELTZp-G8K_pturs-pDK-oJslPAGY-Nhb89Z-5yZ3xkVX224KEM1-KEG9iLzs1SMzbnLGqhk"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+<span class="font-label-caps text-white border border-white/30 px-6 py-3">Voir le Projet</span>
+</div>
+</div>
+<!-- Trio -->
+<div class="md:col-span-4 group relative aspect-square overflow-hidden border border-zinc-900">
+<img alt="Botanical tattoo" class="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjhI8sGD0-0ImtDoGe-toSrQgTuHMGwKTM0i4P_EGQvqD21CzaVblsgWAE7ZqWE6-rqerVhShN68ZlVpeFPI5dVnTBtIfT4Pt5aC6exnDVziZmYuUJEfup_gCzVDPWC9rhqrLvgHZUoHIRrXAZHOVgEOf28Uv3kOZTV7PSS0sgWv-g0iWhe43RlBwQcM6X8lYq_PKei33ZYZ34k7wBSRUJFQrNs_iqSKxhXUnGgQF-EhjgYsaVnKPBRE8-XolERgiAn5JVzRCS6tc"/>
+</div>
+<div class="md:col-span-4 group relative aspect-square overflow-hidden border border-zinc-900">
+<img alt="Abstract black ink tattoo" class="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw_RVHEInesuqoViYEh6RaQdPX1bi73HMon-F27Gun07qfKrB8oE7URwq4U-fXHXxT5mFkel4VuYMOE38F0v6bY1k42kcZRW9fevX156YVs6x7-5e7nVh_OqIm5nyNXrF8mbRj8bajupOFqIzuUX6lsUye1RiYg2OifqnGrlTv6SkfT0LfP7YteYrgKFq50vCRNuwkz8lK275m5fOJgHYgCW51RxuLj3qGclQJfC0LAO5O7GaYGpiH97HuYFbSh94iqC9Yxk7z1sg"/>
+</div>
+<div class="md:col-span-4 group relative aspect-square overflow-hidden border border-zinc-900">
+<img alt="Japanese traditional sleeve" class="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFXJwWLR3vI6u6evosnRCBclfQM0_XCrb8oaydAOdr3fJi5Ku0mhvQxIK1wLicbBROqLrpB121bWY0xwESXuLnC3CdHe5XtEDMY71njfA0JPgQ6KQZdiqHF2cvjlNMN2XMuUjPJXiEY0obWpRep6Y_E7yQl0g9iCpNS4bza3zIWjx2KSYvUwZiesScKn605xLl-v628mmzY_inL8l5gEQiLqIsLyz6tv2u7iI2ey9p7x2CsvHewMWhqEdUzujt6F2RM-SKta50ANk"/>
+</div>
+</div>
+<div class="mt-20 text-center">
+<button class="border border-zinc-800 px-12 py-4 font-label-caps text-zinc-400 hover:text-white hover:border-white transition-all duration-300 uppercase tracking-[0.2em]">
+                Voir Tout le Travail
+            </button>
+</div>
+</section>
+<!-- Booking CTA -->
+<section class="py-[160px] bg-black border-y border-zinc-900 text-center px-16">
+<h2 class="font-headline-display text-white mb-8 uppercase">RÉSERVEZ VOTRE TOILE</h2>
+<p class="font-body-lg text-zinc-500 max-w-2xl mx-auto mb-12">
+            Nos artistes sont souvent complets des mois à l'avance. Nous vous recommandons de planifier une consultation pour discuter de votre vision et de l'emplacement.
+        </p>
+<button class="bg-white text-black px-16 py-5 font-label-caps uppercase tracking-widest text-xs font-bold hover:bg-tertiary transition-colors active:scale-95 duration-200">
+            Se Renseigner
+        </button>
+</section>
+<!-- Footer -->
+<footer class="bg-black text-zinc-500 font-epilogue text-[10px] tracking-widest uppercase w-full py-20 px-16 border-t border-zinc-900">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-lg font-bold text-white font-headline-md tracking-tighter"><img src="logo-obscura.png" alt=""></div>
+<div class="flex gap-12">
+<a class="hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">Politique de Confidentialité</a>
+<a class="hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">Conditions de Service</a>
+<a class="hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">Instagram</a>
+<a class="hover:text-white transition-colors opacity-80 hover:opacity-100" href="#">Contact</a>
+</div>
+<div class="text-zinc-600">
+                © 2024 OBSCURA TATTOO STUDIO. TOUS DROITS RÉSERVÉS.
+            </div>
+</div>
+</footer>
+</div>
+
+<!-- Scripts pour les animations et le smooth scroll -->
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+    // Initialisation de Lenis pour le smooth scroll
+    const lenis = new Lenis();
+    lenis.stop(); // Disable scroll during preloader
+
+    // Timezone Logic
+    function updateTimes() {
+        const now = new Date();
+        
+        // Quimperlé Time (Europe/Paris)
+        const quimperleOptions = { timeZone: 'Europe/Paris', hour: 'numeric', minute: '2-digit', hour12: true };
+        const quimperleTime = now.toLocaleTimeString('en-US', quimperleOptions);
+        const quimperleElement = document.getElementById('time-quimperle');
+        if (quimperleElement) quimperleElement.textContent = quimperleTime;
+
+        // Current Date
+        const dateOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        const currentDate = now.toLocaleDateString('fr-FR', dateOptions);
+        const dateElement = document.getElementById('current-date');
+        if (dateElement) dateElement.textContent = currentDate;
+    }
+
+    // Update times immediately and then every minute
+    updateTimes();
+    setInterval(updateTimes, 60000);
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    // Initialisation de GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animations de la section Hero
+    const tl = gsap.timeline({ paused: true });
+
+    // Animation du titre principal
+    tl.from(".hero-char", {
+        y: 100,
+        rotationZ: 5,
+        opacity: 0,
+        duration: 1.8,
+        stagger: 0.12,
+        ease: "power3.out"
+    })
+    // Animation du sous-titre "Where Art Meets Skin"
+    .from(".font-label-caps.text-tertiary", {
+        y: 20,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    }, "-=1.0")
+    // Animation du texte descriptif à droite
+    .from(".font-body-lg.text-zinc-400", {
+        y: 20,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    }, "-=0.8")
+    // Animation du texte à gauche
+    .from(".md\\:w-1\\/4 .space-y-8", {
+        x: -50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    }, "-=1")
+    // Animation de la vidéo/showreel preview
+    .from(".relative.group.cursor-pointer", {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    }, "-=0.8");
+
+    // Preloader Animation
+    const preloaderText = document.getElementById('preloader-text');
+    const mainContent = document.getElementById('main-content');
+    const preloader = document.getElementById('preloader');
+
+    const preloadTl = gsap.timeline({
+        onComplete: () => {
+            lenis.start(); // Enable scroll after preloader
+            tl.play(); // Start hero animation
+        }
+    });
+
+    preloadTl.to(preloaderText, {
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out"
+    })
+    .to(preloaderText, {
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.8,
+        ease: "power2.in"
+    })
+    .call(() => {
+        // Apply the ink mask to the main content
+        const inkUrl = "url('ink.gif?v=" + new Date().getTime() + "')";
+        mainContent.classList.add('ink-transition-mask');
+        mainContent.style.webkitMaskImage = inkUrl;
+        mainContent.style.maskImage = inkUrl;
+        mainContent.style.opacity = 1;
+        // Make body black so the transition happens from black to dark
+        document.body.style.backgroundColor = "#000000";
+        document.body.classList.remove('bg-white');
+        document.body.classList.add('bg-black');
+        // The preloader background becomes transparent to reveal the ink transition
+        preloader.style.backgroundColor = "transparent";
+    })
+    .to(preloader, {
+        opacity: 0,
+        duration: 0.5,
+        delay: 2.5, // Wait for the ink.gif animation to cover the screen
+        onComplete: () => {
+            preloader.style.display = "none";
+            mainContent.style.webkitMaskImage = "none";
+            mainContent.style.maskImage = "none";
+            mainContent.classList.remove('ink-transition-mask');
+            // Ensure body background stays black
+            document.body.style.backgroundColor = "#000000";
+            document.body.classList.remove('bg-white');
+            document.body.classList.add('bg-black');
+        }
+    });
+
+    // Animations au scroll pour les autres sections
+    const sections = gsap.utils.toArray('section:not(.h-screen)');
+    
+    sections.forEach((section) => {
+        // Sélectionner les éléments à animer dans chaque section, en évitant les images déjà contenues dans un groupe animé
+        const elementsToAnimate = section.querySelectorAll('h2, p, .group, .md\\:col-span-4, .md\\:col-span-8, .md\\:col-span-7 > div');
+        
+        if (elementsToAnimate.length > 0) {
+            gsap.from(elementsToAnimate, {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 85%", // Démarre l'animation quand le haut de la section atteint 85% du viewport
+                    toggleActions: "play none none reverse" // Joue l'animation en descendant, la reverse en remontant
+                }
+            });
+        }
+    });
+</script>
+</body></html>
