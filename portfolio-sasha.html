@@ -237,7 +237,7 @@
             <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="index.html#projects">RÉALISATIONS</a>
         </div>
         <div class="flex flex-col gap-2">
-            <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="#artist">Artiste</a>
+            <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="index.html#team">ARTISTES</a>
             <a class="font-['Inter'] font-bold text-[11px] text-white hover:text-zinc-400 transition-colors uppercase tracking-widest" href="index.html#faq">FAQ</a>
         </div>
     </div>
@@ -245,15 +245,15 @@
     <!-- Right: Reservation Button & Mobile Toggle -->
     <div class="flex items-center gap-4">
         <div class="flex items-stretch h-8 md:h-10">
-            <button class="bg-[#f0f0f0] text-black font-['Inter'] font-bold text-[9px] md:text-[10px] uppercase rounded-xs tracking-widest px-4 md:px-6 h-full flex items-center hover:bg-white transition-colors">
-                <span class="hidden sm:inline">RÉSERVATION</span>
-                <span class="sm:hidden">RÉSERVER</span>
-            </button>
-            <button class="bg-[#f0f0f0] text-black border-l border-zinc-300 w-8 md:w-10 h-full flex items-center justify-center hover:bg-white transition-colors">
+            <a href="#request" class="bg-[#f0f0f0] text-black font-['Inter'] font-bold text-[9px] md:text-[10px] uppercase rounded-xs tracking-widest px-4 md:px-6 h-full flex items-center hover:bg-white transition-colors">
+                <span class="hidden sm:inline">Décrire mon projet</span>
+                <span class="sm:hidden">Projet</span>
+            </a>
+            <a href="#request" class="bg-[#f0f0f0] text-black border-l border-zinc-300 w-8 md:w-10 h-full flex items-center justify-center hover:bg-white transition-colors" aria-label="Décrire mon projet">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                 </svg>
-            </button>
+            </a>
         </div>
         <!-- Hamburger Menu (Mobile Only) -->
         <button id="mobile-menu-btn" class="lg:hidden text-white p-1">
@@ -269,7 +269,8 @@
     </button>
     <a class="font-headline-display text-3xl text-white uppercase tracking-widest hover:text-tertiary transition-colors" href="index.html">ACCUEIL</a>
     <a class="font-headline-display text-3xl text-white uppercase tracking-widest hover:text-tertiary transition-colors" href="index.html#projects">RÉALISATIONS</a>
-    <a class="font-headline-display text-3xl text-white uppercase tracking-widest hover:text-tertiary transition-colors" href="#artist">Artiste</a>
+    <a class="font-headline-display text-3xl text-white uppercase tracking-widest hover:text-tertiary transition-colors" href="index.html#team">ARTISTES</a>
+    <a class="font-headline-display text-3xl text-white uppercase tracking-widest hover:text-tertiary transition-colors" href="#request">PROJET</a>
     <a class="font-headline-display text-3xl text-white uppercase tracking-widest hover:text-tertiary transition-colors" href="index.html#faq">FAQ</a>
 </div>
 <main class="pt-32">
@@ -291,6 +292,14 @@
 <div>
 <span class="font-label-caps text-label-caps text-zinc-500 uppercase block">Expérience</span>
 <span class="font-body-md text-body-md text-white uppercase">8 Ans d'Expérience Collective</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-zinc-500 uppercase block">Instagram</span>
+<a href="#" class="font-body-md text-body-md text-white uppercase hover:text-tertiary transition-colors">@sasha.black</a>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-zinc-500 uppercase block">Contact</span>
+<a href="mailto:booking@obscura.com" class="font-body-md text-body-md text-white uppercase hover:text-tertiary transition-colors">booking@obscura.com</a>
 </div>
 </div>
 </div>
@@ -433,7 +442,7 @@
 <div class="relative z-10">
 <span class="font-label-caps text-label-caps text-zinc-500 uppercase tracking-[0.3em] mb-8 block">Demander une Résidence 2024</span>
 <h2 class="font-headline-display text-[32px] md:text-headline-display leading-[1.1] md:leading-[1.0] text-white mb-12">COMMENCER LE PROCESSUS</h2>
-<a class="inline-block bg-white text-black px-12 py-5 font-label-caps text-label-caps uppercase tracking-[0.2em] hover:bg-tertiary transition-colors duration-500" href="#">
+<a class="inline-block bg-white text-black px-12 py-5 font-label-caps text-label-caps uppercase tracking-[0.2em] hover:bg-tertiary transition-colors duration-500" href="#request">
                     Réserver une Consultation
                 </a>
 </div>
@@ -441,6 +450,47 @@
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-headline-display text-[20vw] text-white/[0.02] pointer-events-none select-none uppercase font-black whitespace-nowrap">
                 SASHA BLACK • SASHA BLACK • SASHA BLACK
             </div>
+</section>
+<!-- Project Request -->
+<section class="py-24 md:py-32 px-8 md:px-16 border-y border-zinc-900 bg-black" id="request">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+<div class="lg:col-span-4">
+<span class="font-label-caps text-label-caps text-tertiary uppercase tracking-[0.2em] mb-4 block">Demande de projet</span>
+<h2 class="font-headline-display text-[32px] md:text-[64px] leading-[1.05] text-white uppercase mb-6">Travailler avec Sasha.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Décrivez votre idée, l'emplacement et vos références. Le studio revient vers vous avec une direction, une estimation et les prochaines disponibilités.</p>
+</div>
+<form class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-5" action="#" method="post">
+<label class="flex flex-col gap-2 font-label-caps text-[10px] text-zinc-400 uppercase tracking-widest">Prénom
+<input class="bg-zinc-950 border border-zinc-800 text-white px-4 py-4 font-body-md focus:outline-none focus:border-tertiary transition-colors" type="text" name="first-name" autocomplete="given-name" required>
+</label>
+<label class="flex flex-col gap-2 font-label-caps text-[10px] text-zinc-400 uppercase tracking-widest">Email
+<input class="bg-zinc-950 border border-zinc-800 text-white px-4 py-4 font-body-md focus:outline-none focus:border-tertiary transition-colors" type="email" name="email" autocomplete="email" required>
+</label>
+<label class="flex flex-col gap-2 font-label-caps text-[10px] text-zinc-400 uppercase tracking-widest">Téléphone
+<input class="bg-zinc-950 border border-zinc-800 text-white px-4 py-4 font-body-md focus:outline-none focus:border-tertiary transition-colors" type="tel" name="phone" autocomplete="tel" required>
+</label>
+<label class="flex flex-col gap-2 font-label-caps text-[10px] text-zinc-400 uppercase tracking-widest">Artiste souhaité
+<select class="bg-zinc-950 border border-zinc-800 text-white px-4 py-4 font-body-md focus:outline-none focus:border-tertiary transition-colors" name="artist">
+<option>Elias Thorne</option>
+<option selected>Sasha Black</option>
+<option>Marcus Vane</option>
+<option>À définir avec le studio</option>
+</select>
+</label>
+<label class="flex flex-col gap-2 font-label-caps text-[10px] text-zinc-400 uppercase tracking-widest">Emplacement
+<input class="bg-zinc-950 border border-zinc-800 text-white px-4 py-4 font-body-md focus:outline-none focus:border-tertiary transition-colors" type="text" name="placement" placeholder="Avant-bras, dos, côtes...">
+</label>
+<label class="flex flex-col gap-2 font-label-caps text-[10px] text-zinc-400 uppercase tracking-widest">Taille / budget
+<input class="bg-zinc-950 border border-zinc-800 text-white px-4 py-4 font-body-md focus:outline-none focus:border-tertiary transition-colors" type="text" name="size-budget" placeholder="10 cm, demi-manchette, 600 €...">
+</label>
+<label class="md:col-span-2 flex flex-col gap-2 font-label-caps text-[10px] text-zinc-400 uppercase tracking-widest">Message et références
+<textarea class="min-h-[170px] bg-zinc-950 border border-zinc-800 text-white px-4 py-4 font-body-md focus:outline-none focus:border-tertiary transition-colors resize-y" name="message" placeholder="Style souhaité, intention, contraintes, lien Instagram ou références visuelles." required></textarea>
+</label>
+<div class="md:col-span-2 flex justify-end">
+<button class="bg-white text-black px-10 py-4 font-label-caps text-label-caps uppercase tracking-[0.2em] hover:bg-tertiary transition-colors duration-500" type="submit">Demander un rendez-vous</button>
+</div>
+</form>
+</div>
 </section>
 </main>
 <!-- Footer -->
